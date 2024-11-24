@@ -121,6 +121,12 @@ nav .menu-items{
     text-decoration: none;
     position: relative;
 }
+ul{
+    padding-left: 0 !important;
+}
+.active{
+
+}
 .nav-links li a:hover:before{
     content: "";
     position: absolute;
