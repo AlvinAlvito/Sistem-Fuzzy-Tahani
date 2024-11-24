@@ -4,31 +4,31 @@
             <img src="/images/logo.png" alt="">
         </div>
 
-        <span class="logo_name">CodingLab</span>
+        <span class="logo_name">MASPLUS</span>
     </div>
 
     <div class="menu-items">
         <ul class="nav-links">
-            <li class="{{ Request::is('/admin') ? 'active' : '' }}">
-                <a href="/admin">
+            <li >
+                <a href="/admin" class="{{ Request::is('/admin') ? 'active' : '' }}">
                     <i class="uil uil-estate"></i>
                     <span class="link-name">Beranda</span>
                 </a>
             </li>
-            <li class="{{ Request::is('/admin/data-siswa') ? 'active' : '' }}">
-                <a href="/admin/data-siswa">
+            <li >
+                <a href="/admin/data-siswa" class="{{ Request::is('/admin/data-siswa') ? 'active' : '' }}">
                     <i class="uil uil-files-landscapes"></i>
                     <span class="link-name">Data Siswa</span>
                 </a>
             </li>
-            <li class="{{ Request::is('/admin/fuzzifikasi') ? 'active' : '' }}">
-                <a href="/admin/fuzzifikasi">
+            <li >
+                <a href="/admin/fuzzifikasi" class="{{ Request::is('/admin/fuzzifikasi') ? 'active' : '' }}">
                     <i class="uil uil-chart"></i>
                     <span class="link-name">Fuzzifikasi</span>
                 </a>
             </li>
-            <li class="{{ Request::is('/admin/rekomendasi') ? 'active' : '' }}">
-                <a href="/admin/rekomendasi">
+            <li >
+                <a href="/admin/rekomendasi" class="{{ Request::is('/admin/rekomendasi') ? 'active' : '' }}">
                     <i class="uil uil-thumbs-up"></i>
                     <span class="link-name">Rekomendasi</span>
                 </a>

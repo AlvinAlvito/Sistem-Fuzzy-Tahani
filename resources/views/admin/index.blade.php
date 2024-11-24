@@ -1,5 +1,16 @@
 @extends('layouts.main')
 @section('content')
+<section class="dashboard">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
+        
+        <img src="/images/profile.jpg" alt="">
+    </div>
     <div class="dash-content">
         <div class="overview">
             <div class="title">
@@ -10,7 +21,7 @@
             <div class="boxes">
                 <div class="box box1">
                     <i class="uil uil-thumbs-up"></i>
-                    <span class="text">Totall Siswa</span>
+                    <span class="text">Total Siswa</span>
                     <span class="number">340</span>
                 </div>
                 <div class="box box2">
@@ -32,19 +43,19 @@
                 <span class="text">Grafik Diagram</span>
             </div>
 
-            <div class="activity-data ">
-                <div style="width: 30%">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
                     <span class="h4 text-center">Grafik Siswa</span>
                     <canvas id="donutChart"></canvas>
                 </div>
-                <div style="width: 50%; ">
+                <div class="col-lg-6 col-sm-12">
                     <span class="h4 text-center">Grafik Guru</span>
                     <canvas id="barChart"></canvas>
                 </div>
             </div>
         </div>
     </div>
-
+</section>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -81,7 +92,7 @@
             labels: ['Total Siswa', 'Total Guru', 'Total Pelajaran'],
             datasets: [{
                 label: 'Jumlah',
-                data: [311, 31, 13],
+                data: [411, 311, 113],
                 backgroundColor: ['#4CAF50', '#FF9800', '#2196F3'],
                 borderColor: ['#388E3C', '#F57C00', '#1976D2'],
                 borderWidth: 1

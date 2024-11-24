@@ -125,7 +125,7 @@ ul{
     padding-left: 0 !important;
 }
 .active{
-
+    color:var(--primary-color);
 }
 .nav-links li a:hover:before{
     content: "";
