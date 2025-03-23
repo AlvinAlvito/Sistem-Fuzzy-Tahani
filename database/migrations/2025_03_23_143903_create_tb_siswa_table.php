@@ -10,10 +10,11 @@ return new class extends Migration {
         Schema::create('tb_siswa', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('akademik')->checkBetween(0, 100);
-            $table->integer('minat')->checkBetween(0, 100);
-            $table->integer('bakat')->checkBetween(0, 100);
-            $table->integer('gaya_belajar')->checkBetween(0, 100);
+            $table->integer('akademik');
+            $table->integer('minat');
+            $table->integer('bakat');
+            $table->integer('gaya_belajar');
+
             $table->timestamps();
         });
     }
