@@ -16,7 +16,6 @@
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Fuzzifikasi</span>
-                    <a class="btn btn-primary" href="/admin/proses-fuzzifikasi">Refresh</a>
                 </div>
 
                 <table class="table table-hover table-striped">
