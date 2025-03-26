@@ -42,18 +42,19 @@
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $data->siswa->nama }}</td>
-                                <td>{{ $data->akademik_rendah }}</td>
-                                <td>{{ $data->akademik_sedang }}</td>
-                                <td>{{ $data->akademik_tinggi }}</td>
-                                <td>{{ $data->minat_kurang }}</td>
-                                <td>{{ $data->minat_cukup }}</td>
-                                <td>{{ $data->minat_tinggi }}</td>
-                                <td>{{ $data->bakat_kurang }}</td>
-                                <td>{{ $data->bakat_sedang }}</td>
-                                <td>{{ $data->bakat_baik }}</td>
-                                <td>{{ $data->gaya_kurang_baik }}</td>
-                                <td>{{ $data->gaya_baik }}</td>
-                                <td>{{ $data->gaya_sangat_baik }}</td>
+                                <td>{{ round($data->akademik_rendah, 1) }}</td>
+                                <td>{{ round($data->akademik_sedang, 1) }}</td>
+                                <td>{{ round($data->akademik_tinggi, 1) }}</td>
+                                <td>{{ round($data->minat_kurang, 1) }}</td>
+                                <td>{{ round($data->minat_cukup, 1) }}</td>
+                                <td>{{ round($data->minat_tinggi, 1) }}</td>
+                                <td>{{ round($data->bakat_kurang, 1) }}</td>
+                                <td>{{ round($data->bakat_sedang, 1) }}</td>
+                                <td>{{ round($data->bakat_baik, 1) }}</td>
+                                <td>{{ round($data->gaya_kurang_baik, 1) }}</td>
+                                <td>{{ round($data->gaya_baik, 1) }}</td>
+                                <td>{{ round($data->gaya_sangat_baik, 1) }}</td>
+
 
                             </tr>
                         @endforeach
