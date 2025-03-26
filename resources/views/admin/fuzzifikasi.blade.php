@@ -18,48 +18,52 @@
                 <span class="text">Fuzzifikasi</span>   
                 <a class="btn btn-primary" href="/admin/proses-fuzzifikasi">Refresh</a>             
             </div>
-            <table>
+
+            <table class="table table-hover table-striped">
               <thead>
                   <tr>
-                      <th>No</th>
-                      <th>Nama</th>
-                      <th>Akademik Rendah</th>
-                      <th>Akademik Sedang</th>
-                      <th>Akademik Tinggi</th>
-                      <th>Minat Kurang</th>
-                      <th>Minat Cukup</th>
-                      <th>Minat Tinggi</th>
-                      <th>Bakat Kurang</th>
-                      <th>Bakat Sedang</th>
-                      <th>Bakat Baik</th>
-                      <th>Gaya Kurang Baik</th>
-                      <th>Gaya Baik</th>
-                      <th>Gaya Sangat Baik</th>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Akademik Rendah</th>
+                    <th>Akademik Sedang</th>
+                    <th>Akademik Tinggi</th>
+                    <th>Minat Kurang</th>
+                    <th>Minat Cukup</th>
+                    <th>Minat Tinggi</th>
+                    <th>Bakat Kurang</th>
+                    <th>Bakat Sedang</th>
+                    <th>Bakat Baik</th>
+                    <th>Gaya Kurang Baik</th>
+                    <th>Gaya Baik</th>
+                    <th>Gaya Sangat Baik</th>
                   </tr>
               </thead>
               <tbody>
-                  @foreach ($fuzzifikasi as $data)
+                @foreach ($fuzzifikasi as $data)
                       <tr>
-                          <td>{{ $loop->iteration }}</td>
-                          <td>{{ $data->siswa->nama }}</td>
-                          <td>{{ $data->akademik_rendah }}</td>
-                          <td>{{ $data->akademik_sedang }}</td>
-                          <td>{{ $data->akademik_tinggi }}</td>
-                          <td>{{ $data->minat_kurang }}</td>
-                          <td>{{ $data->minat_cukup }}</td>
-                          <td>{{ $data->minat_tinggi }}</td>
-                          <td>{{ $data->bakat_kurang }}</td>
-                          <td>{{ $data->bakat_sedang }}</td>
-                          <td>{{ $data->bakat_baik }}</td>
-                          <td>{{ $data->gaya_kurang_baik }}</td>
-                          <td>{{ $data->gaya_baik }}</td>
-                          <td>{{ $data->gaya_sangat_baik }}</td>
+                          <th scope="row">{{ $loop->iteration }}</th>
+                       
+                        
+                              <td>{{ $loop->iteration }}</td>
+                              <td>{{ $data->siswa->nama }}</td>
+                              <td>{{ $data->akademik_rendah }}</td>
+                              <td>{{ $data->akademik_sedang }}</td>
+                              <td>{{ $data->akademik_tinggi }}</td>
+                              <td>{{ $data->minat_kurang }}</td>
+                              <td>{{ $data->minat_cukup }}</td>
+                              <td>{{ $data->minat_tinggi }}</td>
+                              <td>{{ $data->bakat_kurang }}</td>
+                              <td>{{ $data->bakat_sedang }}</td>
+                              <td>{{ $data->bakat_baik }}</td>
+                              <td>{{ $data->gaya_kurang_baik }}</td>
+                              <td>{{ $data->gaya_baik }}</td>
+                              <td>{{ $data->gaya_sangat_baik }}</td>
+
                       </tr>
                   @endforeach
               </tbody>
           </table>
-          
-            
+
         </div>
     </div>
 </section>
