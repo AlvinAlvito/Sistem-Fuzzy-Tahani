@@ -2,49 +2,26 @@
 
 namespace App\Models;
 
-class Fuzzyfikasi
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Fuzzyfikasi extends Model
 {
-    public static function fuzzifikasiAkademik($nilai)
-    {
-        if ($nilai <= 50) {
-            return "Rendah";
-        } elseif ($nilai > 50 && $nilai <= 75) {
-            return "Sedang";
-        } else {
-            return "Tinggi";
-        }
-    }
+    use HasFactory;
 
-    public static function fuzzifikasiMinat($nilai)
-    {
-        if ($nilai <= 3) {
-            return "Rendah";
-        } elseif ($nilai > 3 && $nilai <= 7) {
-            return "Sedang";
-        } else {
-            return "Tinggi";
-        }
-    }
+    protected $table = 'tb_fuzzyfikasi';
 
-    public static function fuzzifikasiBakat($nilai)
-    {
-        if ($nilai <= 3) {
-            return "Rendah";
-        } elseif ($nilai > 3 && $nilai <= 7) {
-            return "Sedang";
-        } else {
-            return "Tinggi";
-        }
-    }
+    protected $fillable = [
+        'nama',
+        'akademik_rendah', 'akademik_sedang', 'akademik_tinggi', 'akademik_linguistik',
+        'minat_kurang', 'minat_cukup', 'minat_tinggi', 'minat_linguistik',
+        'bakat_kurang', 'bakat_sedang', 'bakat_baik', 'bakat_linguistik',
+        'gaya_kurang_baik', 'gaya_baik', 'gaya_sangat_baik', 'gaya_linguistik',
+    ];
 
-    public static function fuzzifikasiGayaBelajar($gaya)
+    public function siswa()
     {
-        $kategori = [
-            "Visual" => "Tinggi",
-            "Auditori" => "Sedang",
-            "Kinestetik" => "Rendah",
-        ];
-
-        return $kategori[$gaya] ?? "Sedang";
+        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 }

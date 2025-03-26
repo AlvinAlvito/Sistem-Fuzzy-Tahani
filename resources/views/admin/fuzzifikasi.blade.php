@@ -15,52 +15,51 @@
         <div class="activity">
             <div class="title">
                 <i class="uil uil-tachometer-fast-alt"></i>
-                <span class="text">Fuzzifikasi</span>                
+                <span class="text">Fuzzifikasi</span>   
+                <a class="btn btn-primary" href="/admin/proses-fuzzifikasi">Refresh</a>             
             </div>
-            <table class="table table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Jurusan</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <a class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil uil-edit"></i></a>
-                            <a href="" class="text-danger"><i class="uil uil-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>
-                            <a class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil uil-edit"></i></a>
-                            <a href="" class="text-danger"><i class="uil uil-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>
-                            <a class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil uil-edit"></i></a>
-                            <a href="" class="text-danger"><i class="uil uil-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
+            <table>
+              <thead>
+                  <tr>
+                      <th>No</th>
+                      <th>Nama</th>
+                      <th>Akademik Rendah</th>
+                      <th>Akademik Sedang</th>
+                      <th>Akademik Tinggi</th>
+                      <th>Minat Kurang</th>
+                      <th>Minat Cukup</th>
+                      <th>Minat Tinggi</th>
+                      <th>Bakat Kurang</th>
+                      <th>Bakat Sedang</th>
+                      <th>Bakat Baik</th>
+                      <th>Gaya Kurang Baik</th>
+                      <th>Gaya Baik</th>
+                      <th>Gaya Sangat Baik</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($fuzzifikasi as $data)
+                      <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $data->siswa->nama }}</td>
+                          <td>{{ $data->akademik_rendah }}</td>
+                          <td>{{ $data->akademik_sedang }}</td>
+                          <td>{{ $data->akademik_tinggi }}</td>
+                          <td>{{ $data->minat_kurang }}</td>
+                          <td>{{ $data->minat_cukup }}</td>
+                          <td>{{ $data->minat_tinggi }}</td>
+                          <td>{{ $data->bakat_kurang }}</td>
+                          <td>{{ $data->bakat_sedang }}</td>
+                          <td>{{ $data->bakat_baik }}</td>
+                          <td>{{ $data->gaya_kurang_baik }}</td>
+                          <td>{{ $data->gaya_baik }}</td>
+                          <td>{{ $data->gaya_sangat_baik }}</td>
+                      </tr>
+                  @endforeach
+              </tbody>
+          </table>
+          
+            
         </div>
     </div>
 </section>
