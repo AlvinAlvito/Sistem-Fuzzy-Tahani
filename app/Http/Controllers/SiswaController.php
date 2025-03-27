@@ -83,8 +83,13 @@ class SiswaController extends Controller
             'gaya_belajar' => $request->gaya_belajar,
         ]);
     
+        $siswa->prosesFuzzifikasiPerSiswa();
+
+    
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diperbarui.');
     }
+    
+    
     
     
 
