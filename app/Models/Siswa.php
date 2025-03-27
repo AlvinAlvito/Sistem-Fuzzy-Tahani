@@ -33,35 +33,57 @@ class Siswa extends Model
 
     public function prosesFuzzifikasiPerSiswa()
     {
-        $fuzzifikasi = Fuzzyfikasi::firstOrNew(['siswa_id' => $this->id]); // Cek jika sudah ada data
+        $fuzzifikasi = Fuzzyfikasi::firstOrNew(['siswa_id' => $this->id]); // Ambil atau buat data baru
+        $fuzzifikasi->siswa_id = $this->id;
+    
+        // Konfigurasi batas fuzzifikasi
+        $batas = [
+            'akademik' => [50, 75, 90],
+            'minat' => [30, 60, 80],
+            'bakat' => [30, 60, 80],
+            'gaya_belajar' => [40, 70, 90]
+        ];
     
         // Fuzzifikasi Akademik
         $x = $this->akademik;
-        $fuzzifikasi->akademik_rendah = ($x <= 50) ? 1 : (($x <= 75) ? (75 - $x) / (75 - 50) : 0);
-        $fuzzifikasi->akademik_sedang = ($x <= 50 || $x >= 90) ? 0 : (($x <= 75) ? ($x - 50) / (75 - 50) : (90 - $x) / (90 - 75));
-        $fuzzifikasi->akademik_tinggi = ($x <= 75) ? 0 : (($x <= 90) ? ($x - 75) / (90 - 75) : 1);
+        $low = $batas['akademik'][0];
+        $med = $batas['akademik'][1];
+        $high = $batas['akademik'][2];
+        $fuzzifikasi->akademik_rendah = ($x <= $low) ? 1 : (($x <= $med) ? ($med - $x) / ($med - $low) : 0);
+        $fuzzifikasi->akademik_sedang = ($x <= $low || $x >= $high) ? 0 : (($x <= $med) ? ($x - $low) / ($med - $low) : ($high - $x) / ($high - $med));
+        $fuzzifikasi->akademik_tinggi = ($x <= $med) ? 0 : (($x <= $high) ? ($x - $med) / ($high - $med) : 1);
     
         // Fuzzifikasi Minat
         $x = $this->minat;
-        $fuzzifikasi->minat_kurang = ($x <= 30) ? 1 : (($x <= 60) ? (60 - $x) / (60 - 30) : 0);
-        $fuzzifikasi->minat_cukup = ($x <= 30 || $x >= 80) ? 0 : (($x <= 60) ? ($x - 30) / (60 - 30) : (80 - $x) / (80 - 60));
-        $fuzzifikasi->minat_tinggi = ($x <= 60) ? 0 : (($x <= 80) ? ($x - 60) / (80 - 60) : 1);
+        $low = $batas['minat'][0];
+        $med = $batas['minat'][1];
+        $high = $batas['minat'][2];
+        $fuzzifikasi->minat_kurang = ($x <= $low) ? 1 : (($x <= $med) ? ($med - $x) / ($med - $low) : 0);
+        $fuzzifikasi->minat_cukup = ($x <= $low || $x >= $high) ? 0 : (($x <= $med) ? ($x - $low) / ($med - $low) : ($high - $x) / ($high - $med));
+        $fuzzifikasi->minat_tinggi = ($x <= $med) ? 0 : (($x <= $high) ? ($x - $med) / ($high - $med) : 1);
     
         // Fuzzifikasi Bakat
         $x = $this->bakat;
-        $fuzzifikasi->bakat_kurang = ($x <= 30) ? 1 : (($x <= 60) ? (60 - $x) / (60 - 30) : 0);
-        $fuzzifikasi->bakat_sedang = ($x <= 30 || $x >= 80) ? 0 : (($x <= 60) ? ($x - 30) / (60 - 30) : (80 - $x) / (80 - 60));
-        $fuzzifikasi->bakat_baik = ($x <= 60) ? 0 : (($x <= 80) ? ($x - 60) / (80 - 60) : 1);
+        $low = $batas['bakat'][0];
+        $med = $batas['bakat'][1];
+        $high = $batas['bakat'][2];
+        $fuzzifikasi->bakat_kurang = ($x <= $low) ? 1 : (($x <= $med) ? ($med - $x) / ($med - $low) : 0);
+        $fuzzifikasi->bakat_sedang = ($x <= $low || $x >= $high) ? 0 : (($x <= $med) ? ($x - $low) / ($med - $low) : ($high - $x) / ($high - $med));
+        $fuzzifikasi->bakat_baik = ($x <= $med) ? 0 : (($x <= $high) ? ($x - $med) / ($high - $med) : 1);
     
         // Fuzzifikasi Gaya Belajar
         $x = $this->gaya_belajar;
-        $fuzzifikasi->gaya_kurang_baik = ($x <= 40) ? 1 : (($x <= 70) ? (70 - $x) / (70 - 40) : 0);
-        $fuzzifikasi->gaya_baik = ($x <= 40 || $x >= 90) ? 0 : (($x <= 70) ? ($x - 40) / (70 - 40) : (90 - $x) / (90 - 70));
-        $fuzzifikasi->gaya_sangat_baik = ($x <= 70) ? 0 : (($x <= 90) ? ($x - 70) / (90 - 70) : 1);
+        $low = $batas['gaya_belajar'][0];
+        $med = $batas['gaya_belajar'][1];
+        $high = $batas['gaya_belajar'][2];
+        $fuzzifikasi->gaya_kurang_baik = ($x <= $low) ? 1 : (($x <= $med) ? ($med - $x) / ($med - $low) : 0);
+        $fuzzifikasi->gaya_baik = ($x <= $low || $x >= $high) ? 0 : (($x <= $med) ? ($x - $low) / ($med - $low) : ($high - $x) / ($high - $med));
+        $fuzzifikasi->gaya_sangat_baik = ($x <= $med) ? 0 : (($x <= $high) ? ($x - $med) / ($high - $med) : 1);
     
         // Simpan hasil fuzzifikasi
         $fuzzifikasi->save();
     }
+    
     
 
 
