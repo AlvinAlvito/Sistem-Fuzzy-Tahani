@@ -17,26 +17,26 @@
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Rekomendasi</span>
                 </div>
-                <table id="tabelRekomendasi" class="table table-bordered">
+                <table id="tabelRekomendasi" class="table table-hover table-striped border">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Nama Siswa</th>
-                            <th>Nilai IPA</th>
-                            <th>Nilai IPS</th>
-                            <th>Nilai Agama</th>
-                            <th>Jurusan Rekomendasi</th>
+                            <th class="text-center border">No</th>
+                            <th class="text-center border">Nama Siswa</th>
+                            <th class="text-center border">Nilai IPA</th>
+                            <th class="text-center border">Nilai IPS</th>
+                            <th class="text-center border">Nilai Agama</th>
+                            <th class="text-center border">Jurusan Rekomendasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($siswa as $key => $s)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $s->nama }}</td>
-                                <td>{{ number_format($s->fuzzyfikasiQuery->ipa ?? 0, 2) }}</td>
-                                <td>{{ number_format($s->fuzzyfikasiQuery->ips ?? 0, 2) }}</td>
-                                <td>{{ number_format($s->fuzzyfikasiQuery->agama ?? 0, 2) }}</td>
-                                <td><strong>{{ $s->fuzzyfikasiQuery->rekomendasi ?? 'Belum Ada' }}</strong></td>
+                                <td class="text-center border">{{ $key + 1 }}</td>
+                                <td class="text-center border">{{ $s->nama }}</td>
+                                <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->ipa ?? 0, 2) }}</td>
+                                <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->ips ?? 0, 2) }}</td>
+                                <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->agama ?? 0, 2) }}</td>
+                                <td class="text-center border"><strong>{{ $s->fuzzyfikasiQuery->rekomendasi ?? 'Belum Ada' }}</strong></td>
                             </tr>
                         @endforeach
                     </tbody>

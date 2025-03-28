@@ -14,10 +14,14 @@ class Siswa extends Model
     protected $table = 'tb_siswa';
 
     protected $fillable = ['nama', 'akademik', 'minat', 'bakat', 'gaya_belajar'];
-
     public function fuzzyfikasi()
     {
         return $this->hasOne(Fuzzyfikasi::class, 'siswa_id');
+    }
+
+    public function fuzzyQuery()
+    {
+        return $this->hasOne(FuzzyfikasiQuery::class, 'siswa_id');
     }
 
     public function fuzzyfikasiQuery()

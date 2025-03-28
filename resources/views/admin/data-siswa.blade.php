@@ -50,6 +50,7 @@
                             <th scope="col">Minat</th>
                             <th scope="col">Bakat</th>
                             <th scope="col">Gaya Belajar</th>
+                            <th scope="col">Profil Siswa</th> 
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -63,6 +64,11 @@
                                 <td>{{ $siswa->bakat }}</td>
                                 <td>{{ $siswa->gaya_belajar }}</td>
                                 <td>
+                                    <a href="{{ url('/admin/profil-siswa/' . $siswa->id) }}" class="text-primary btn-sm">
+                                        <i class="uil uil-user"></i>
+                                    </a>
+                                </td> 
+                                <td>
                                     <!-- Tombol Edit -->
                                     <a href="#" class="text-primary edit-btn" data-id="{{ $siswa->id }}"
                                         data-nama="{{ $siswa->nama }}" data-akademik="{{ $siswa->akademik }}"
@@ -71,12 +77,12 @@
                                         data-bs-target="#editModal">
                                         <i class="uil uil-edit"></i>
                                     </a>
-
+                
                                     <!-- Tombol Hapus -->
                                     <a href="#" class="text-danger delete-btn" data-id="{{ $siswa->id }}">
                                         <i class="uil uil-trash-alt"></i>
                                     </a>
-
+                
                                     <form id="delete-form-{{ $siswa->id }}"
                                         action="{{ route('siswa.destroy', $siswa->id) }}" method="POST"
                                         style="display: none;">
@@ -88,6 +94,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
 
             </div>
         </div>

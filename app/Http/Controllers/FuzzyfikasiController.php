@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fuzzyfikasi;
 use App\Models\Siswa;
+use App\Models\FuzzyfikasiQuery;
 
 class FuzzyfikasiController extends Controller
 {    
@@ -33,6 +34,17 @@ class FuzzyfikasiController extends Controller
         return redirect()->route('admin.fuzzifikasi')->with('success', 'Data berhasil ditambahkan dan difuzzifikasi.');
     }
     
+    public function getRekomendasiCount()
+    {
+        $data = FuzzyfikasiQuery::selectRaw('rekomendasi, COUNT(*) as total')
+            ->groupBy('rekomendasi')
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ]);
+    }
     
     
 

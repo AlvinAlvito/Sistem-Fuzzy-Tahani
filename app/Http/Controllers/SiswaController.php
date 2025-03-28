@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Siswa;
+use App\Models\Fuzzyfikasi;
+use App\Models\FuzzyQuery;
 
 class SiswaController extends Controller
 {
@@ -36,14 +38,14 @@ class SiswaController extends Controller
             'bakat' => 'required|integer|min:0|max:100',
             'gaya_belajar' => 'required|integer|min:0|max:100',
         ]);
-    
+
         // Simpan data siswa
         Siswa::create($request->all());
-    
+
         // Redirect kembali ke halaman Data Siswa dengan pesan sukses
         return redirect('/admin/data-siswa')->with('success', 'Data siswa berhasil ditambahkan!');
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -73,7 +75,7 @@ class SiswaController extends Controller
             'bakat' => 'required|string|max:100',
             'gaya_belajar' => 'required|string|max:100',
         ]);
-    
+
         $siswa = Siswa::findOrFail($id);
         $siswa->update([
             'nama' => $request->nama,
@@ -82,16 +84,13 @@ class SiswaController extends Controller
             'bakat' => $request->bakat,
             'gaya_belajar' => $request->gaya_belajar,
         ]);
-    
+
         $siswa->prosesFuzzifikasiPerSiswa();
         $siswa->prosesFuzzifikasiQuery();
-    
+
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diperbarui.');
     }
-    
-    
-    
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -100,8 +99,8 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
-    
+
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus.');
     }
-    
+
 }
