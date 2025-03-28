@@ -3,13 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\FuzzyfikasiController;
-
+use App\Http\Controllers\FuzzyfikasiQueryController;
 
 
 Route::prefix('admin')->group(function () {
     Route::get('/fuzzifikasi', [FuzzyfikasiController::class, 'index']);
     Route::get('/proses-fuzzifikasi', [FuzzyfikasiController::class, 'prosesFuzzifikasi']);
+    Route::get('/rekomendasi', [FuzzyfikasiQueryController::class, 'index'])->name('admin.rekomendasi');
 });
+
+
+
+
+
 
 
 
@@ -21,9 +27,6 @@ Route::get('/admin', function () {
 Route::get('/admin/data-siswa', [SiswaController::class, 'index']);
 
 
-Route::get('/admin/rekomendasi', function () {
-    return view('admin.rekomendasi');
-});
 
 Route::get('/', function () {
     return view('login');

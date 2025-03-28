@@ -14,7 +14,6 @@ class FuzzyfikasiController extends Controller
         $fuzzifikasi = Fuzzyfikasi::all();
         $data = Fuzzyfikasi::with('siswa')->get();
 
-
         return view('admin.fuzzifikasi', compact('fuzzifikasi'));
     }
 

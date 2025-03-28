@@ -17,70 +17,33 @@
                 <i class="uil uil-tachometer-fast-alt"></i>
                 <span class="text">Rekomendasi</span>                
             </div>
-            <table class="table table-hover table-striped">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Jurusan</th>
-                        <th scope="col">Aksi</th>
+                        <th>No</th>
+                        <th>Nama Siswa</th>
+                        <th>Nilai IPA</th>
+                        <th>Nilai IPS</th>
+                        <th>Nilai Agama</th>
+                        <th>Jurusan Rekomendasi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <a class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil uil-edit"></i></a>
-                            <a href="" class="text-danger"><i class="uil uil-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>
-                            <a class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil uil-edit"></i></a>
-                            <a href="" class="text-danger"><i class="uil uil-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>
-                            <a class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil uil-edit"></i></a>
-                            <a href="" class="text-danger"><i class="uil uil-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    
+                    @foreach ($siswa as $key => $s)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $s->nama }}</td>
+                            <td>{{ number_format($s->fuzzyfikasiQuery->ipa ?? 0, 2) }}</td>
+                            <td>{{ number_format($s->fuzzyfikasiQuery->ips ?? 0, 2) }}</td>
+                            <td>{{ number_format($s->fuzzyfikasiQuery->agama ?? 0, 2) }}</td>
+                            <td><strong>{{ $s->fuzzyfikasiQuery->rekomendasi ?? 'Belum Ada' }}</strong></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </section>
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 @endsection

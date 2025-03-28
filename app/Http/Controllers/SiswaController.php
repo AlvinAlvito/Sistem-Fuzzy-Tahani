@@ -84,7 +84,7 @@ class SiswaController extends Controller
         ]);
     
         $siswa->prosesFuzzifikasiPerSiswa();
-
+        $siswa->prosesFuzzifikasiQuery();
     
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diperbarui.');
     }
