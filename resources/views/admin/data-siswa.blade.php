@@ -33,15 +33,15 @@
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Data Siswa</span>
                 </div>
-                <div class="row justify-content-end">
-                    <div class="col-lg-3 col-md-4 col-sm-6 text-end">
+                <div class="row justify-content-start mb-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModal">
                             <i class="uil uil-plus"></i> Tambah Data
                         </button>
                     </div>
                 </div>
 
-                <table class="table table-hover table-striped">
+                <table id="tabelSiswa" class="table table-hover table-striped">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -56,13 +56,14 @@
                     <tbody>
                         @foreach ($siswas as $index => $siswa)
                             <tr>
-                                <th scope="row">{{ $index + 1 }}</th>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ $siswa->nama }}</td>
                                 <td>{{ $siswa->akademik }}</td>
                                 <td>{{ $siswa->minat }}</td>
                                 <td>{{ $siswa->bakat }}</td>
                                 <td>{{ $siswa->gaya_belajar }}</td>
                                 <td>
+                                    <!-- Tombol Edit -->
                                     <a href="#" class="text-primary edit-btn" data-id="{{ $siswa->id }}"
                                         data-nama="{{ $siswa->nama }}" data-akademik="{{ $siswa->akademik }}"
                                         data-minat="{{ $siswa->minat }}" data-bakat="{{ $siswa->bakat }}"
@@ -71,6 +72,7 @@
                                         <i class="uil uil-edit"></i>
                                     </a>
 
+                                    <!-- Tombol Hapus -->
                                     <a href="#" class="text-danger delete-btn" data-id="{{ $siswa->id }}">
                                         <i class="uil uil-trash-alt"></i>
                                     </a>
@@ -82,60 +84,11 @@
                                         @method('DELETE')
                                     </form>
                                 </td>
-
                             </tr>
-
-                            <!-- Modal Edit -->
-                            <div class="modal fade" id="editModal{{ $siswa->id }}" tabindex="-1"
-                                aria-labelledby="editModalLabel{{ $siswa->id }}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Edit Data Siswa</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <form action="{{ route('siswa.update', $siswa->id) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label for="nama" class="form-label">Nama</label>
-                                                    <input type="text" name="nama" class="form-control"
-                                                        value="{{ $siswa->nama }}" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="akademik" class="form-label">Akademik</label>
-                                                    <input type="number" name="akademik" class="form-control"
-                                                        value="{{ $siswa->akademik }}" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="minat" class="form-label">Minat</label>
-                                                    <input type="number" name="minat" class="form-control"
-                                                        value="{{ $siswa->minat }}" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="bakat" class="form-label">Bakat</label>
-                                                    <input type="number" name="bakat" class="form-control"
-                                                        value="{{ $siswa->bakat }}" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="gaya_belajar" class="form-label">Gaya Belajar</label>
-                                                    <input type="number" name="gaya_belajar" class="form-control"
-                                                        value="{{ $siswa->gaya_belajar }}" required>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
     </section>
@@ -229,51 +182,29 @@
     </div>
 
 
-
+    <!-- jQuery (Wajib) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Saat tombol edit diklik, isi modal dengan data siswa
+            // Edit modal handling
             document.querySelectorAll(".edit-btn").forEach(button => {
                 button.addEventListener("click", function() {
-                    let siswaId = this.getAttribute("data-id");
-                    let nama = this.getAttribute("data-nama");
-                    let akademik = this.getAttribute("data-akademik");
-                    let minat = this.getAttribute("data-minat");
-                    let bakat = this.getAttribute("data-bakat");
-                    let gayaBelajar = this.getAttribute("data-gaya_belajar");
-
-                    document.getElementById("edit-id").value = siswaId;
-                    document.getElementById("edit-nama").value = nama;
-                    document.getElementById("edit-akademik").value = akademik;
-                    document.getElementById("edit-minat").value = minat;
-                    document.getElementById("edit-bakat").value = bakat;
-                    document.getElementById("edit-gaya_belajar").value = gayaBelajar;
-
-                    // Ubah action form agar mengarah ke update
-                    document.getElementById("editForm").setAttribute("action", "/siswa/" + siswaId);
+                    const data = this.dataset;
+                    ["id", "nama", "akademik", "minat", "bakat", "gaya_belajar"].forEach(field => {
+                        document.getElementById(`edit-${field}`).value = data[field];
+                    });
+                    document.getElementById("editForm").setAttribute("action", `/siswa/${data.id}`);
                 });
             });
 
-            // Notifikasi SweetAlert jika sukses
-            @if (session('success'))
-                Swal.fire({
-                    title: "Berhasil!",
-                    text: "{{ session('success') }}",
-                    icon: "success",
-                    confirmButtonText: "OK"
-                });
-            @endif
-        });
-    </script>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
+            // Delete confirmation
             document.querySelectorAll(".delete-btn").forEach(button => {
                 button.addEventListener("click", function(event) {
                     event.preventDefault();
-                    let siswaId = this.getAttribute("data-id");
+                    const siswaId = this.dataset.id;
 
                     Swal.fire({
                         title: "Apakah Anda yakin?",
@@ -284,11 +215,45 @@
                         cancelButtonColor: "#3085d6",
                         confirmButtonText: "Ya, Hapus!",
                         cancelButtonText: "Batal"
-                    }).then((result) => {
+                    }).then(result => {
                         if (result.isConfirmed) {
                             document.getElementById(`delete-form-${siswaId}`).submit();
                         }
                     });
+                });
+            });
+
+            // SweetAlert notification
+            if ("{{ session('success') }}") {
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: "{{ session('success') }}",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
+            }
+
+            // DataTable initialization
+            $(document).ready(function() {
+                $('.table, #tabelSiswa').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    lengthMenu: [5, 10, 25, 50, 100],
+                    language: {
+                        lengthMenu: "Tampilkan _MENU_ data per halaman",
+                        zeroRecords: "Tidak ada data yang ditemukan",
+                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                        infoEmpty: "Tidak ada data tersedia",
+                        search: "Cari:",
+                        paginate: {
+                            first: "Awal",
+                            last: "Akhir",
+                            next: "Selanjutnya",
+                            previous: "Sebelumnya"
+                        }
+                    }
                 });
             });
         });

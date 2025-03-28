@@ -99,7 +99,7 @@ class Siswa extends Model
 
         // Hitung nilai keanggotaan untuk setiap jurusan
         $ipa = ($fuzzifikasiData->akademik_tinggi + $fuzzifikasiData->minat_tinggi + 
-                $fuzzifikasiData->bakat_baik + $fuzzifikasiData->gaya_baik) / 4;
+                $fuzzifikasiData->bakat_baik + $fuzzifikasiData->gaya_sangat_baik) / 4;
         $ips = ($fuzzifikasiData->akademik_sedang + $fuzzifikasiData->minat_cukup + 
                 $fuzzifikasiData->bakat_sedang + $fuzzifikasiData->gaya_sangat_baik) / 4;
         $agama = ($fuzzifikasiData->akademik_rendah + $fuzzifikasiData->minat_tinggi + 

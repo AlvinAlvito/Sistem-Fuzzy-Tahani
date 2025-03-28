@@ -1,49 +1,81 @@
 @extends('layouts.main')
 @section('content')
-<section class="dashboard">
-    <div class="top">
-        <i class="uil uil-bars sidebar-toggle"></i>
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
 
-        <div class="search-box">
-            <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here...">
-        </div>
-        
-        <img src="/images/profile.jpg" alt="">
-    </div>
-    <div class="dash-content">
-        <div class="activity">
-            <div class="title">
-                <i class="uil uil-tachometer-fast-alt"></i>
-                <span class="text">Rekomendasi</span>                
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
             </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Siswa</th>
-                        <th>Nilai IPA</th>
-                        <th>Nilai IPS</th>
-                        <th>Nilai Agama</th>
-                        <th>Jurusan Rekomendasi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($siswa as $key => $s)
-                        <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $s->nama }}</td>
-                            <td>{{ number_format($s->fuzzyfikasiQuery->ipa ?? 0, 2) }}</td>
-                            <td>{{ number_format($s->fuzzyfikasiQuery->ips ?? 0, 2) }}</td>
-                            <td>{{ number_format($s->fuzzyfikasiQuery->agama ?? 0, 2) }}</td>
-                            <td><strong>{{ $s->fuzzyfikasiQuery->rekomendasi ?? 'Belum Ada' }}</strong></td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+
+            <img src="/images/profile.jpg" alt="">
         </div>
-    </div>
-</section>
-  
- 
+        <div class="dash-content">
+            <div class="activity">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Rekomendasi</span>
+                </div>
+                <table id="tabelRekomendasi" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Siswa</th>
+                            <th>Nilai IPA</th>
+                            <th>Nilai IPS</th>
+                            <th>Nilai Agama</th>
+                            <th>Jurusan Rekomendasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($siswa as $key => $s)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $s->nama }}</td>
+                                <td>{{ number_format($s->fuzzyfikasiQuery->ipa ?? 0, 2) }}</td>
+                                <td>{{ number_format($s->fuzzyfikasiQuery->ips ?? 0, 2) }}</td>
+                                <td>{{ number_format($s->fuzzyfikasiQuery->agama ?? 0, 2) }}</td>
+                                <td><strong>{{ $s->fuzzyfikasiQuery->rekomendasi ?? 'Belum Ada' }}</strong></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tabelRekomendasi').DataTable({
+                "paging": true, // Aktifkan Pagination
+                "searching": true, // Aktifkan Pencarian
+                "ordering": true, // Aktifkan Sorting
+                "info": true, // Tampilkan Info Jumlah Data
+                "lengthMenu": [5, 10, 25, 50, 100], // Pilihan jumlah data per halaman
+                "language": {
+                    "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                    "zeroRecords": "Tidak ada data yang ditemukan",
+                    "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    "infoEmpty": "Tidak ada data tersedia",
+                    "search": "Cari:",
+                    "paginate": {
+                        "first": "Awal",
+                        "last": "Akhir",
+                        "next": "Selanjutnya",
+                        "previous": "Sebelumnya"
+                    }
+                },
+                "columnDefs": [{
+                        "orderable": false,
+                        "targets": [5]
+                    } // Nonaktifkan sorting pada kolom "Jurusan Rekomendasi"
+                ]
+            });
+        });
+    </script>
 @endsection

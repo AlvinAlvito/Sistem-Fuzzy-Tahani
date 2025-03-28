@@ -18,7 +18,7 @@
                     <span class="text">Fuzzifikasi</span>
                 </div>
 
-                <table class="table table-hover table-striped border">
+                <table id="tabelFuzzifikasi" class="table table-hover table-striped border">
                     <thead>
                         <tr>
                             <th rowspan="2" class="text-center border">No</th>
@@ -47,7 +47,7 @@
                         @foreach ($fuzzifikasi as $data)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td class=" border">{{ $data->siswa->nama }}</td>
+                                <td class="border">{{ $data->siswa->nama }}</td>
                                 <td class="text-center border">{{ round($data->akademik_rendah, 1) }}</td>
                                 <td class="text-center border">{{ round($data->akademik_sedang, 1) }}</td>
                                 <td class="text-center border">{{ round($data->akademik_tinggi, 1) }}</td>
@@ -65,27 +65,41 @@
                     </tbody>
                 </table>
                 
+                
 
             </div>
         </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tabelFuzzifikasi').DataTable({
+                "paging": true, // Aktifkan Pagination
+                "searching": true, // Aktifkan Pencarian
+                "ordering": true, // Aktifkan Sorting
+                "info": true, // Tampilkan Info Jumlah Data
+                "lengthMenu": [5, 10, 25, 50, 100], // Pilihan jumlah data per halaman
+                "language": {
+                    "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                    "zeroRecords": "Tidak ada data yang ditemukan",
+                    "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    "infoEmpty": "Tidak ada data tersedia",
+                    "search": "Cari:",
+                    "paginate": {
+                        "first": "Awal",
+                        "last": "Akhir",
+                        "next": "Selanjutnya",
+                        "previous": "Sebelumnya"
+                    }
+                },
+                "columnDefs": [
+                    { "orderable": false, "targets": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] } // Nonaktifkan sorting di beberapa kolom
+                ]
+            });
+        });
+    </script>
+    
 @endsection
