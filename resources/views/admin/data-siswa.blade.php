@@ -41,59 +41,63 @@
                     </div>
                 </div>
 
-                <table id="tabelSiswa" class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Akademik</th>
-                            <th scope="col">Minat</th>
-                            <th scope="col">Bakat</th>
-                            <th scope="col">Gaya Belajar</th>
-                            <th scope="col">Profil Siswa</th> 
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($siswas as $index => $siswa)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $siswa->nama }}</td>
-                                <td>{{ $siswa->akademik }}</td>
-                                <td>{{ $siswa->minat }}</td>
-                                <td>{{ $siswa->bakat }}</td>
-                                <td>{{ $siswa->gaya_belajar }}</td>
-                                <td>
-                                    <a href="{{ url('/admin/profil-siswa/' . $siswa->id) }}" class="text-primary btn-sm">
-                                        <i class="uil uil-user"></i>
-                                    </a>
-                                </td> 
-                                <td>
-                                    <!-- Tombol Edit -->
-                                    <a href="#" class="text-primary edit-btn" data-id="{{ $siswa->id }}"
-                                        data-nama="{{ $siswa->nama }}" data-akademik="{{ $siswa->akademik }}"
-                                        data-minat="{{ $siswa->minat }}" data-bakat="{{ $siswa->bakat }}"
-                                        data-gaya_belajar="{{ $siswa->gaya_belajar }}" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">
-                                        <i class="uil uil-edit"></i>
-                                    </a>
-                
-                                    <!-- Tombol Hapus -->
-                                    <a href="#" class="text-danger delete-btn" data-id="{{ $siswa->id }}">
-                                        <i class="uil uil-trash-alt"></i>
-                                    </a>
-                
-                                    <form id="delete-form-{{ $siswa->id }}"
-                                        action="{{ route('siswa.destroy', $siswa->id) }}" method="POST"
-                                        style="display: none;">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-12" style="overflow-x:scroll ">
+                        <table id="tabelSiswa" class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Akademik</th>
+                                    <th scope="col">Minat</th>
+                                    <th scope="col">Bakat</th>
+                                    <th scope="col">Gaya Belajar</th>
+                                    <th scope="col">Profil Siswa</th> 
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($siswas as $index => $siswa)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $siswa->nama }}</td>
+                                        <td>{{ $siswa->akademik }}</td>
+                                        <td>{{ $siswa->minat }}</td>
+                                        <td>{{ $siswa->bakat }}</td>
+                                        <td>{{ $siswa->gaya_belajar }}</td>
+                                        <td>
+                                            <a href="{{ url('/admin/profil-siswa/' . $siswa->id) }}" class="btn btn-primary btn-sm">
+                                                <i class="uil uil-user"></i>
+                                            </a>
+                                        </td> 
+                                        <td>
+                                            <!-- Tombol Edit -->
+                                            <a href="#" class="btn btn-warning edit-btn" data-id="{{ $siswa->id }}"
+                                                data-nama="{{ $siswa->nama }}" data-akademik="{{ $siswa->akademik }}"
+                                                data-minat="{{ $siswa->minat }}" data-bakat="{{ $siswa->bakat }}"
+                                                data-gaya_belajar="{{ $siswa->gaya_belajar }}" data-bs-toggle="modal"
+                                                data-bs-target="#editModal">
+                                                <i class="uil uil-edit"></i>
+                                            </a>
+                        
+                                            <!-- Tombol Hapus -->
+                                            <a href="#" class="btn btn-danger delete-btn" data-id="{{ $siswa->id }}">
+                                                <i class="uil uil-trash-alt"></i>
+                                            </a>
+                        
+                                            <form id="delete-form-{{ $siswa->id }}"
+                                                action="{{ route('siswa.destroy', $siswa->id) }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 
 
             </div>
@@ -133,8 +137,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Tambah Data</button>
                     </div>
                 </form>
             </div>

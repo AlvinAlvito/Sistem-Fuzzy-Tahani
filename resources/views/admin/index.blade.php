@@ -49,12 +49,12 @@
                         <canvas id="donutChart"></canvas>
                     </div>
                     <div class="col-lg-6 col-sm-12">
-                        <span class="h4 text-center">Diagram Bar</span>
-                        <canvas id="barChart"></canvas>
-                    </div>
-                    <div class="col-lg-6 col-sm-12">
                         <span class="h4 text-center">Diagram Polar</span>
                         <canvas id="polarChart"></canvas>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <span class="h4 text-center">Diagram Bar</span>
+                        <canvas id="barChart"></canvas>
                     </div>
                     <div class="col-lg-6 col-sm-12">
                         <span class="h4 text-center">Diagram Line</span>

@@ -1,24 +1,16 @@
 <?php
 
-namespace App\Providers;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\SiswaMiddleware;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-use Illuminate\Support\ServiceProvider;
-
-class AppServiceProvider extends ServiceProvider
+class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function boot()
     {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        //
+        // Daftarkan middleware secara manual
+        Route::aliasMiddleware('admin', AdminMiddleware::class);
+        Route::aliasMiddleware('siswa', SiswaMiddleware::class);
     }
 }

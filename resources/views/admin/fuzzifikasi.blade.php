@@ -17,53 +17,56 @@
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Fuzzifikasi</span>
                 </div>
-
-                <table id="tabelFuzzifikasi" class="table table-hover table-striped border">
-                    <thead>
-                        <tr>
-                            <th rowspan="2" class="text-center border">No</th>
-                            <th rowspan="2" class="text-center border">Nama</th>
-                            <th colspan="3" class="text-center border">Akademik</th>
-                            <th colspan="3" class="text-center border">Minat</th>
-                            <th colspan="3" class="text-center border">Bakat</th>
-                            <th colspan="3" class="text-center border">Gaya Belajar</th>
-                        </tr>
-                        <tr class="border">
-                            <th class="text-center border">Rendah</th>
-                            <th class="text-center border">Sedang</th>
-                            <th class="text-center border">Tinggi</th>
-                            <th class="text-center border">Kurang</th>
-                            <th class="text-center border">Cukup</th>
-                            <th class="text-center border">Tinggi</th>
-                            <th class="text-center border">Kurang</th>
-                            <th class="text-center border">Sedang</th>
-                            <th class="text-center border">Baik</th>
-                            <th class="text-center border">Kurang Baik</th>
-                            <th class="text-center border">Baik</th>
-                            <th class="text-center border">Sangat Baik</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($fuzzifikasi as $data)
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td class="border">{{ $data->siswa->nama }}</td>
-                                <td class="text-center border">{{ round($data->akademik_rendah, 1) }}</td>
-                                <td class="text-center border">{{ round($data->akademik_sedang, 1) }}</td>
-                                <td class="text-center border">{{ round($data->akademik_tinggi, 1) }}</td>
-                                <td class="text-center border">{{ round($data->minat_kurang, 1) }}</td>
-                                <td class="text-center border">{{ round($data->minat_cukup, 1) }}</td>
-                                <td class="text-center border">{{ round($data->minat_tinggi, 1) }}</td>
-                                <td class="text-center border">{{ round($data->bakat_kurang, 1) }}</td>
-                                <td class="text-center border">{{ round($data->bakat_sedang, 1) }}</td>
-                                <td class="text-center border">{{ round($data->bakat_baik, 1) }}</td>
-                                <td class="text-center border">{{ round($data->gaya_kurang_baik, 1) }}</td>
-                                <td class="text-center border">{{ round($data->gaya_baik, 1) }}</td>
-                                <td class="text-center border">{{ round($data->gaya_sangat_baik, 1) }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-12" style="overflow-x:scroll ">
+                        <table id="tabelFuzzifikasi" class="table table-hover table-striped border">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" class="text-center border">No</th>
+                                    <th rowspan="2" class="text-center border">Nama</th>
+                                    <th colspan="3" class="text-center border">Akademik</th>
+                                    <th colspan="3" class="text-center border">Minat</th>
+                                    <th colspan="3" class="text-center border">Bakat</th>
+                                    <th colspan="3" class="text-center border">Gaya Belajar</th>
+                                </tr>
+                                <tr class="border">
+                                    <th class="text-center border">Rendah</th>
+                                    <th class="text-center border">Sedang</th>
+                                    <th class="text-center border">Tinggi</th>
+                                    <th class="text-center border">Kurang</th>
+                                    <th class="text-center border">Cukup</th>
+                                    <th class="text-center border">Tinggi</th>
+                                    <th class="text-center border">Kurang</th>
+                                    <th class="text-center border">Sedang</th>
+                                    <th class="text-center border">Baik</th>
+                                    <th class="text-center border">Kurang Baik</th>
+                                    <th class="text-center border">Baik</th>
+                                    <th class="text-center border">Sangat Baik</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($fuzzifikasi as $data)
+                                    <tr>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td class="border">{{ $data->siswa->nama }}</td>
+                                        <td class="text-center border">{{ round($data->akademik_rendah, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->akademik_sedang, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->akademik_tinggi, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->minat_kurang, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->minat_cukup, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->minat_tinggi, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->bakat_kurang, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->bakat_sedang, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->bakat_baik, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->gaya_kurang_baik, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->gaya_baik, 1) }}</td>
+                                        <td class="text-center border">{{ round($data->gaya_sangat_baik, 1) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 
                 
 

@@ -17,30 +17,34 @@
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Rekomendasi</span>
                 </div>
-                <table id="tabelRekomendasi" class="table table-hover table-striped border">
-                    <thead>
-                        <tr>
-                            <th class="text-center border">No</th>
-                            <th class="text-center border">Nama Siswa</th>
-                            <th class="text-center border">Nilai IPA</th>
-                            <th class="text-center border">Nilai IPS</th>
-                            <th class="text-center border">Nilai Agama</th>
-                            <th class="text-center border">Jurusan Rekomendasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($siswa as $key => $s)
-                            <tr>
-                                <td class="text-center border">{{ $key + 1 }}</td>
-                                <td class="text-center border">{{ $s->nama }}</td>
-                                <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->ipa ?? 0, 2) }}</td>
-                                <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->ips ?? 0, 2) }}</td>
-                                <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->agama ?? 0, 2) }}</td>
-                                <td class="text-center border"><strong>{{ $s->fuzzyfikasiQuery->rekomendasi ?? 'Belum Ada' }}</strong></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-12" style="overflow-x:scroll ">
+                        <table id="tabelRekomendasi" class="table table-hover table-striped border">
+                            <thead>
+                                <tr>
+                                    <th class="text-center border">No</th>
+                                    <th class="text-center border">Nama Siswa</th>
+                                    <th class="text-center border">Nilai IPA</th>
+                                    <th class="text-center border">Nilai IPS</th>
+                                    <th class="text-center border">Nilai Agama</th>
+                                    <th class="text-center border">Jurusan Rekomendasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($siswa as $key => $s)
+                                    <tr>
+                                        <td class="text-center border">{{ $key + 1 }}</td>
+                                        <td class="text-center border">{{ $s->nama }}</td>
+                                        <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->ipa ?? 0, 2) }}</td>
+                                        <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->ips ?? 0, 2) }}</td>
+                                        <td class="text-center border">{{ number_format($s->fuzzyfikasiQuery->agama ?? 0, 2) }}</td>
+                                        <td class="text-center border"><strong>{{ $s->fuzzyfikasiQuery->rekomendasi ?? 'Belum Ada' }}</strong></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
             </div>
         </div>

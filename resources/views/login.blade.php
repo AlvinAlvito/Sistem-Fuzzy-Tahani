@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mas Plus Al Ulum</title>
-    <!-- Google Fonts Link For Icons -->
+    <title>Mas Plus Al Ulum - Login</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="/style/login.css">
-    
 </head>
 <body>
     <header>
@@ -36,59 +33,39 @@
         <div class="form-box login">
             <div class="form-details">
                 <h2>Selamat Datang</h2>
-                <p>Sihlakan Masukan Akun anda Untuk Melanjutkan Membuka Halaman Beranda Admin!</p>
+                <p>Silakan masukkan akun Anda untuk melanjutkan.</p>
             </div>
             <div class="form-content">
                 <h2>LOGIN</h2>
-                <form action="#">
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
                     <div class="input-field">
-                        <input type="text" required>
+                        <input type="text" name="username" required>
                         <label>Username</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" required>
+                        <input type="password" name="password" required>
                         <label>Password</label>
                     </div>
-                    <a href="/admin" class="forgot-pass-link">Lupa Password?</a>
+                    @if(session('error'))
+                        <p class="error-message">{{ session('error') }}</p>
+                    @endif
                     <button type="submit"><i class="uil uil-signin"></i> Masuk</button>
                 </form>
             </div>
         </div>
-
     </div>
+
     <script>
-        // Login
-        const navbarMenu = document.querySelector(".navbar .links");
-        const hamburgerBtn = document.querySelector(".hamburger-btn");
-        const hideMenuBtn = navbarMenu.querySelector(".close-btn");
         const showPopupBtn = document.querySelector(".login-btn");
         const formPopup = document.querySelector(".form-popup");
         const hidePopupBtn = formPopup.querySelector(".close-btn");
-        const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
 
-        // Show mobile menu
-        hamburgerBtn.addEventListener("click", () => {
-            navbarMenu.classList.toggle("show-menu");
-        });
-
-        // Hide mobile menu
-        hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
-
-        // Show login popup
         showPopupBtn.addEventListener("click", () => {
             document.body.classList.toggle("show-popup");
         });
 
-        // Hide login popup
         hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
-
-        // Show or hide signup form
-        signupLoginLink.forEach(link => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                formPopup.classList[link.id === 'signup-link' ? 'add' : 'remove']("show-signup");
-            });
-        });
     </script>
 </body>
 </html>

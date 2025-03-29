@@ -33,6 +33,12 @@
                     <span class="link-name">Rekomendasi</span>
                 </a>
             </li>
+            <li >
+                <a href="/" class="{{ Request::is('/') ? 'active' : '' }}">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="link-name">Halaman Depan</span>
+                </a>
+            </li>
         </ul>
         
 
