@@ -35,15 +35,8 @@ Route::middleware(['auth', SiswaMiddleware::class])->prefix('siswa')->group(func
     Route::get('/', function () {
         return view('siswa.index');
     })->name('siswa.dashboard');
-
-    Route::get('/fuzzifikasi', [FuzzyfikasiController::class, 'index']);
-    Route::get('/proses-fuzzifikasi', [FuzzyfikasiController::class, 'prosesFuzzifikasi']);
     Route::get('/rekomendasi', [FuzzyfikasiQueryController::class, 'index'])->name('admin.rekomendasi');
-    Route::get('/data-siswa', [SiswaController::class, 'index']);
-    Route::get('/profil-siswa/{id}', [ProfilSiswaController::class, 'showProfil'])->name('siswa.profil');
 
-    // CRUD Siswa
-    Route::resource('siswa', SiswaController::class);
 });
 
 // **Route Tambahan**

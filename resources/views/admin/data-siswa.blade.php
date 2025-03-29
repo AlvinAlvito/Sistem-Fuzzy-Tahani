@@ -206,7 +206,7 @@
                     ["id", "nama", "akademik", "minat", "bakat", "gaya_belajar"].forEach(field => {
                         document.getElementById(`edit-${field}`).value = data[field];
                     });
-                    document.getElementById("editForm").setAttribute("action", `/siswa/${data.id}`);
+                    document.getElementById("editForm").setAttribute("action", `/admin/siswa/${data.id}`);
                 });
             });
 
