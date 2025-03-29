@@ -68,7 +68,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            fetch('http://127.0.0.1:8000/rekomendasi-count')
+            fetch('/rekomendasi-count')
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === "success" && Array.isArray(data.data)) {
@@ -79,7 +79,7 @@
                 .catch(error => console.error("Error fetching data:", error));
         });
         document.addEventListener("DOMContentLoaded", function() {
-            fetch("http://127.0.0.1:8000/rekomendasi-count")
+            fetch("/rekomendasi-count")
                 .then(response => response.json())
                 .then(data => {
                     const labels = data.data.map(item => item.rekomendasi);
