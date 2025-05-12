@@ -18,6 +18,9 @@
                     <span class="text">Rekomendasi</span>
                 </div>
                 <div class="row">
+                    <div class="col-12">
+                        <a href="/admin/cetak/rekomendasi" class="btn btn-primary btn-sm my-2">Unduh File Rekomendasi</a>
+                    </div>
                     <div class="col-12" style="overflow-x:scroll ">
                         <table id="tabelRekomendasi" class="table table-hover table-striped border">
                             <thead>

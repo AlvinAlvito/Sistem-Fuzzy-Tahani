@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfilSiswaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\SiswaMiddleware;
+use App\Http\Controllers\PdfController;
 
 // **Login & Logout**
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
@@ -28,6 +29,8 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
 
     // CRUD Siswa
     Route::resource('siswa', SiswaController::class);
+    Route::get('/cetak/rekomendasi', [PdfController::class, 'cetakPDF']);
+
 });
 
 // **Route untuk Siswa**
